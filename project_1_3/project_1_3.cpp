@@ -37,9 +37,32 @@ int main() {
 
   // TODO write your code here
   // =========== START =========
+  for (int i = 0; i < x.size(); i++) {
+    int sum = 0;
+    for (int j = i; j < i + 3; j++) {
+      int k = j - 1;
+      int x1;
+      int w1;
+      if (k < 0 || k > x.size() - 1) {
+        x1 = 0;
+      } else {
+        x1 = x[k];
+      }
+      if (j > w.size() - 1) {
+        w1 = 0;
+      } else {
+        w1 = w[j];
+      }
+      sum = sum +(x1 * w1);
+    }
+    y[i] = sum;
+  }
 
-
-
+  std::cout << "{" << y[0];
+  for (int i = 1; i < y.size(); i++) {
+    std::cout << ", " << y[i];
+  }
+  std::cout << "}\n";
 
   // =========== END ===========
 
