@@ -6,8 +6,13 @@ int main() {
 	std::cout << "Use the wasd keys and enter to input a direction, or the E key to stop" << std::endl;
 
     // Write your code for step 1 here
+    std::vector<double> wheel_speeds;
 
     // Write your code for step 2 here
+    wheel_speeds.push_back(0.0);
+    wheel_speeds.push_back(0.0);
+    wheel_speeds.push_back(0.0);
+    wheel_speeds.push_back(0.0);
    
     // Do not edit the next 5 lines
     bool keep_going = true;
@@ -16,6 +21,37 @@ int main() {
     while (keep_going) {
         std::cin >> direction; //At the begining of every iteration look for an input from the user
         // Write rest of code here (within while loop)
+        if (direction == 'w') {
+            for(int i = 0; i < wheel_speeds.size(); i++) {
+                wheel_speeds[i] = 1.0;
+            }
+        } else if (direction == 'a') {
+            wheel_speeds[0] = 0.5;
+            wheel_speeds[1] = 1.0;
+            wheel_speeds[2] = 0.5;
+            wheel_speeds[3] = 1.0;
+        } else if (direction == 's') {
+            for(int i = 0; i < wheel_speeds.size(); i++) {
+                wheel_speeds[i] = -1.0;
+            }
+        } else if (direction == 'd') {
+            wheel_speeds[0] = 0.5;
+            wheel_speeds[1] = 0.5;
+            wheel_speeds[2] = 0.5;
+            wheel_speeds[3] = 0.5;
+        } else if (direction == 'e') {
+            for(int i = 0; i < wheel_speeds.size(); i++) {
+                wheel_speeds[i] = 0.0;
+            }
+            std::cout << "Shutting Down\n";
+            keep_going = false;
+        } else {
+            std::cout << "Sorry, I didn't get that. Try again.";
+        }
+
+        for(int i = 0; i < wheel_speeds.size(); i++) {
+               std::cout << "Wheel at index " << i << " has speed " << wheel_speeds[i] << "\n";
+            }
 
         //
     }
